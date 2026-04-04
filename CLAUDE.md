@@ -11,7 +11,7 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - Proxy: /api/proxy route (handles CORS for all providers server-side)
 - State: React useState only -- no persistence, no database, in-memory
 - CSV parsing: PapaParse
-- Deployment: Vercel (not yet deployed)
+- Deployment: Vercel -- live at eval.harshit.ai
 - Repo: github.com/harshitleads/eval-studio
 
 ## Architecture
@@ -125,3 +125,4 @@ When >= 50% of rows error after eval completes, an inline key-fix panel appears 
 ### 2026-04-05 -- Full redesign: 3 provider keys, N-way configs, ranked leaderboard, typography overhaul
 ### 2026-04-05 -- Cost tracking + homepage + golden dataset shipped
 ### 2026-04-05 -- API key error recovery panel shipped
+### 2026-04-05 -- Deployed to Vercel at eval.harshit.ai

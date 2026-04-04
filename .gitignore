@@ -18,3 +18,4 @@ AGENTS.md
 
 # Logs
 *.log
+.vercel
