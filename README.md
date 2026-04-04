@@ -1,30 +1,28 @@
-# dev-template
+# Eval Studio
 
-Harshit's standard starting point for all new projects. Clone this template to get the full project structure, workflow commands, and context files set up from day one.
+A browser-based AI prompt evaluation tool. Upload your dataset, configure 2-4 prompts or models, define a scoring rubric, and run a head-to-head eval judged by a multi-model council. Results are a ranked leaderboard with per-config cost breakdown.
 
-## What's Included
+**Live:** [eval.harshit.ai](https://eval.harshit.ai)
 
-- `.cursorrules` — tells Cursor to read CLAUDE.md automatically at every session start
-- `CLAUDE.md` — project intelligence template, fill in per project
-- `AGENTS.md` — agent instructions template
-- `docs/decisions.md` — product decision log template
-- `.claude/commands/` — slash commands for Claude Code workflow
-- `.cursor/rules/` — Cursor workflow rules
+## What it does
 
-## Slash Commands
+**Test Models** — Same prompt, different models. See which model serves your data best and at what cost.
 
-- `/explore` — understand the codebase before touching anything
-- `/create-plan` — propose an approach, wait for approval
-- `/execute` — build only what was approved
-- `/review` — check for errors and quality
-- `/document` — update CLAUDE.md with what changed this session
+**Test Prompts** — Same model, different prompts. See which prompt produces better outputs on your actual data.
 
-## Repo Files
+## How it works
 
-**CLAUDE.md** — technical context for Claude Code. Fill in stack, architecture, code rules, and known issues when starting a new project.
+1. Enter API keys for Anthropic, OpenAI, or Google Gemini
+2. Upload a CSV dataset or use the built-in 50-row sample dataset
+3. Configure 2-4 prompt/model combinations
+4. Define a scoring rubric with weighted criteria
+5. Run the eval — a judge council scores each output independently
+6. Get a ranked leaderboard with scores, cost breakdown, and CSV export
 
-**docs/decisions.md** — product decision log. Record significant decisions here as you build. Each entry: what was decided, why, what was rejected.
+## Stack
 
-## How to Use
+Next.js 14, TypeScript, Tailwind CSS, Vercel. All API calls go through a server-side proxy. Keys are never stored or logged.
 
-Go to `github.com/harshitleads/dev-template` and click "Use this template" to create a new repo. Never clone directly.
+## Local development
+
+npm install && npm run dev
