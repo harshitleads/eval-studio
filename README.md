@@ -67,4 +67,4 @@ You'll need at least one API key from Anthropic, OpenAI, or Google to run evals.
 
 ---
 
-Built by [Harshit Sharma](https://harshit.ai) as part of a portfolio of AI products demonstrating LLM evals fluency.
+Built by [Harshit Sharma](https://harshit.ai).
