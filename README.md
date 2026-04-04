@@ -8,6 +8,14 @@ Upload your real data. Define your criteria. Run a scored, ranked, cost-tracked 
 
 **Live:** [eval.harshit.ai](https://eval.harshit.ai)
 
+![Eval Studio results page showing ranked leaderboard with cost breakdown](docs/results-screenshot.jpg)
+
+---
+
+## Why I built this
+
+Every AI team I talked to was making prompt and model selection decisions based on vibes, manual review, or generic benchmarks that had nothing to do with their actual product. Evals are the right answer -- but existing tools either require significant engineering setup, test on public benchmarks that don't reflect real use cases, or lock results behind expensive SaaS plans. I wanted a tool I could open in a browser, point at my own data, and get a reproducible, scored, cost-tracked answer in under 5 minutes. So I built it.
+
 ---
 
 ## The problem it solves
