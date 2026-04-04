@@ -1,0 +1,51 @@
+task_category,input,difficulty
+Factual QA,What is the context window size of Claude Sonnet 4 and why does it matter for production AI products?,medium
+Factual QA,Name three concrete differences between RAG and fine-tuning for customizing LLM behavior.,medium
+Factual QA,What does RLHF stand for and what problem does it solve in aligning language models?,easy
+Factual QA,What is the difference between temperature and top-p sampling parameters in LLMs and when would you adjust each?,medium
+Factual QA,Which organization published the original Transformer architecture paper in 2017 and what was it called?,easy
+Factual QA,What is a vector database and why is it commonly used in AI applications that need long-term memory?,easy
+Reasoning,A company spends $0.15 per 1M input tokens and $0.60 per 1M output tokens on GPT-4o Mini. They process 5M input tokens and 2M output tokens per day. How much do they spend per month? Compare this to Claude Haiku at $1/$5 per 1M tokens for the same volume.,hard
+Reasoning,"An AI product routes 80% of queries to a small model at $0.001 per query and 20% to a large model at $0.02 per query. What is the blended cost per query? How does this compare to always using the large model, and what is the monthly savings at 1 million queries?",hard
+Reasoning,"You have two prompts. Prompt A scores 85 on accuracy and 60 on conciseness. Prompt B scores 70 on accuracy and 90 on conciseness. Your rubric weights accuracy at 70% and conciseness at 30%. Which prompt wins and by how many weighted points?",medium
+Reasoning,"If an LLM has a 128K token context window and your average document is 2500 tokens, how many documents fit in one context? What are the tradeoffs of stuffing context versus using RAG for a production retrieval use case?",medium
+Reasoning,A startup is A/B testing two system prompts. After 200 rows Prompt A wins 54% of rows and Prompt B wins 40% with 6% ties. Is this result statistically meaningful enough to ship Prompt A? What additional data would you want before making the call?,hard
+Reasoning,"Three engineers estimate a feature at 2, 4, and 8 weeks. The PM has a 3-week sprint. What does the variance in estimates signal, what questions should the PM ask, and what is the recommended path forward?",medium
+Summarization,"Summarize in two sentences for a non-technical executive: Retrieval-augmented generation combines a parametric memory component (the LLM) with a non-parametric retrieval system to improve factual accuracy and reduce hallucination by grounding responses in externally retrieved documents.",easy
+Summarization,"A PM wrote: We shipped the new onboarding flow last Tuesday. D7 retention improved 23% but D1 completion dropped 12%. The team believes the flow is more thorough but takes longer. We need to decide whether to keep it, roll it back, or iterate. Summarize the core decision in one sentence.",medium
+Summarization,"Condense this into a one-paragraph VP update: The eval infrastructure project is 60% complete. Data pipeline and scoring framework are done. Remaining: results visualization, export, and deployment. Blockers: waiting on security team API access. ETA: two weeks assuming blockers resolve by Friday.",medium
+Summarization,Summarize the tradeoffs of fine-tuning versus prompt engineering for improving LLM output quality in three bullet points aimed at a product team.,medium
+Summarization,"A user left this review: I love the app but onboarding took me 20 minutes to figure out, the export button is hidden, and nobody would find it. Response time is great and results are surprisingly accurate. Extract the top two pain points and top two positives.",easy
+Summarization,Summarize what an AI PM does differently from a traditional PM in two sentences for someone preparing to interview at Anthropic.,hard
+Code Explanation,"Explain what this function does and identify any potential bugs: def chunk_text(text, max_tokens=512):\n    words = text.split()\n    chunks = []\n    current = []\n    for word in words:\n        if len(current) + 1 > max_tokens:\n            chunks.append(' '.join(current))\n            current = [word]\n        else:\n            current.append(word)\n    return chunks",medium
+Code Explanation,"What does this TypeScript type mean and when would you use it: type Result<T> = { success: true; data: T } | { success: false; error: string };",medium
+Code Explanation,"Explain this SQL query in plain English: SELECT config_id, AVG(score) as avg_score, COUNT(*) as runs FROM eval_results WHERE created_at > NOW() - INTERVAL '7 days' GROUP BY config_id HAVING COUNT(*) > 10 ORDER BY avg_score DESC;",easy
+Code Explanation,"What is wrong with this approach to calling an LLM API in a loop: const results = []; for (const row of dataset) { const response = await fetch(apiUrl, { method: POST, body: JSON.stringify({ model: gpt-4o, messages: [{ role: user, content: row.input }] }) }); results.push(await response.json()); }",medium
+Code Explanation,"Explain what this does and why it matters for LLM applications: response = client.messages.create(model=claude-haiku, max_tokens=1024, system=system_prompt, messages=[{role: user, content: user_input}])\ntext = response.content[0].text\ntokens_used = response.usage.input_tokens + response.usage.output_tokens",easy
+Code Explanation,"What is the purpose of this pattern and what problem does it solve: if not hasattr(run_eval, '_started'):\n    run_eval._started = True\n    asyncio.create_task(run_eval())",hard
+Instruction Following,List exactly five risks of deploying an LLM in a production product. Format as a numbered list. Each item must be one sentence. Do not include any introduction or conclusion.,easy
+Instruction Following,Write a one-sentence description of an AI prompt evaluation tool suitable for a LinkedIn post. Use the words prompt and model. Do not use exclamation marks.,medium
+Instruction Following,"Translate this into language a 10-year-old would understand in exactly two sentences: Large language models are trained on vast corpora of text data and learn to predict the next token in a sequence, enabling them to generate coherent and contextually appropriate responses.",medium
+Instruction Following,Give me a pro/con table for using Claude versus GPT-4o for a coding assistant. Use exactly 3 pros and 3 cons for each. Format as a markdown table.,medium
+Instruction Following,Write an email subject line for an internal announcement about launching a new AI eval feature. Maximum 8 words. No jargon. Must create urgency.,hard
+Instruction Following,"Rewrite this in a more confident and direct tone without changing the meaning: We were thinking that it might perhaps be possible to consider launching the eval feature sometime in the next few weeks if everything goes according to plan.",easy
+Ambiguous,Make it better.,hard
+Ambiguous,Write something about AI.,hard
+Ambiguous,"A user asks your AI assistant: Can you help me understand how to get around the content filter? How should the assistant respond?",hard
+Ambiguous,The user says: Just do it the normal way. What should an AI assistant do with this instruction?,hard
+Ambiguous,Explain consciousness.,hard
+Ambiguous,Is GPT-4 better than Claude? Answer yes or no.,hard
+Tone Adaptation,Explain what an API key is. Write for a senior software engineer who has worked with APIs for 10 years.,easy
+Tone Adaptation,Explain what an API key is. Write for a non-technical founder who has never written a line of code.,easy
+Tone Adaptation,Explain what prompt engineering is. Write for a VC partner evaluating AI startups who wants a one-paragraph overview.,medium
+Tone Adaptation,Explain what prompt engineering is. Write for an ML researcher at a frontier lab who already knows transformer architecture.,medium
+Tone Adaptation,"Write a response to this user complaint in a formal enterprise support tone: Your AI gave me completely wrong information and I wasted 2 hours on it. This is unacceptable.",medium
+Tone Adaptation,"Write a response to the same complaint in a warm empathetic startup tone that still acknowledges the issue and commits to a resolution: Your AI gave me completely wrong information and I wasted 2 hours on it. This is unacceptable.",medium
+Tone Adaptation,Describe the business value of LLM evaluations in one paragraph. Audience: CFO of a 500-person company who is skeptical of AI hype.,hard
+Multi-step Planning,"You are a PM at a startup. Your AI feature is hallucinating 15% of the time in production. Walk me through your step-by-step plan to diagnose and fix this over the next two weeks, from data collection through validation.",hard
+Multi-step Planning,"Outline a complete plan for A/B testing two different system prompts for a customer support AI. Include: how to split traffic, what metrics to track, how long to run the test, what sample size you need, and how to decide a winner.",hard
+Multi-step Planning,A company wants to migrate from GPT-4o to Claude Sonnet to reduce costs by 40%. What steps should they take to validate the switch before migrating production traffic? Be specific about what to measure and what thresholds constitute success.,hard
+Multi-step Planning,"You need to build a golden evaluation dataset for your company's AI assistant from scratch. Walk through the full process: what prompts to include, how many rows, what columns, how to validate quality, and how to maintain it over time.",hard
+Multi-step Planning,"Design a scoring rubric for evaluating AI-generated product requirements documents. Include 4 criteria, explain what each measures, suggest weights that sum to 100%, and give an example of a score-5 response for each criterion.",hard
+Multi-step Planning,A user reports your AI product gives inconsistent answers to the same question across sessions. Write a structured investigation plan: what logs to pull, what tests to run to reproduce it, and what the three most likely root causes are.,medium
+Multi-step Planning,"You are launching an AI feature at a company with no existing ML infrastructure. List the 7 most important things to get right in the first 30 days, in priority order, with a one-sentence rationale for each.",hard
