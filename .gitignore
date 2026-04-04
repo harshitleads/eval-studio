@@ -19,3 +19,6 @@ AGENTS.md
 # Logs
 *.log
 .vercel
+
+# TypeScript build info
+tsconfig.tsbuildinfo

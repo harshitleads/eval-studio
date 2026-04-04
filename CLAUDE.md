@@ -1,4 +1,4 @@
-# CLAUDE.md — Eval Studio
+# CLAUDE.md
 
 ## Vision and Mission
 Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs. Users bring their own production dataset, define 2-4 prompt/model configurations, set a scoring rubric, and run a head-to-head eval judged by a multi-model council. Results are a ranked leaderboard with per-config cost breakdown. Two use cases: (1) same prompt, different models -- model selection; (2) different prompts, same model -- prompt engineering.
@@ -12,7 +12,7 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - State: React useState only -- no persistence, no database, in-memory
 - CSV parsing: PapaParse
 - Deployment: Vercel -- live at eval.harshit.ai
-- Repo: github.com/harshitleads/eval-studio
+- Repo: github.com/harshitleads/Eval-Studio
 
 ## Architecture
 
@@ -56,7 +56,7 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 ## Design System
 
 ### Colors
-```css
+```
 --bg: #0a0a0a
 --surface: #141414
 --card: #1a1a1a
@@ -80,6 +80,25 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - DM Mono ONLY for: score numbers, token counts, cost figures, progress counter
 - Minimum font size: 13px. No exceptions.
 
+## Code Rules
+- No em dashes anywhere in copy
+- All API calls go through /api/proxy route
+- TypeScript strict mode, no any types
+- Minimum font size 13px, no uppercase labels
+- DM Mono only for data values (scores, tokens, costs, progress counter)
+- NEVER run git commit, git push, git reset, git checkout, or any git write commands. Only the developer commits and pushes manually. This rule has no exceptions.
+- NEVER delete files unless the task spec explicitly says to delete a specific named file. If unsure, rename or comment out instead of deleting.
+
+## Decision Logging
+When you make or execute a product or technical decision, append it to `docs/decisions.md` in this format:
+```
+### YYYY-MM-DD -- Short title
+**Decision:** What was decided.
+**Why:** The reasoning.
+**Rejected:** What alternatives were considered and why they lost.
+```
+This applies to every Claude session touching this project, not just the CTO chat.
+
 ## Shipped Features
 
 ### Step flow
@@ -91,38 +110,26 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - Step 4: RunEval (progress bar, results table, aggregate summary, cost tracking)
 
 ### Key recovery (RunEval.tsx)
-When >= 50% of rows error after eval completes, an inline key-fix panel appears above the aggregate summary:
-- Red-bordered card: "API calls failed" title + explanation
-- 3 editable key inputs (Anthropic, OpenAI, Gemini) pre-filled with current localKeys
-- "Retry with updated keys" button reruns eval without navigating away
-- Dismiss x button
-- Uses localKeys state override so user never loses dataset/config/rubric state
+When >= 50% of rows error after eval completes, an inline key-fix panel appears above the aggregate summary with editable key inputs, retry button, and dismiss. Uses localKeys state override so user never loses dataset/config/rubric state.
 
 ### Cost tracking
 - PRICING lookup table in providers.ts with per-model input/output rates
 - computeCost() utility in providers.ts
 - /api/proxy returns inputTokens and outputTokens for all 3 providers
-- callModel returns { text, inputTokens, outputTokens }
-- Per-row cost shown in ResultsTable (DM Mono)
-- Cost Summary table in AggregateSummary (Total Tokens, Total Cost, Avg Cost/Row)
-- PRICING_LAST_UPDATED = '2026-04-05' shown in footer
+- Per-row cost shown in ResultsTable, aggregate in AggregateSummary
+- PRICING_LAST_UPDATED shown in footer
 
 ### Golden dataset
-- /public/golden-dataset.csv: 50 rows, 8 task categories, columns: task_category, input, difficulty
-- "Use sample dataset" link in DatasetUpload loads it via fetch('/golden-dataset.csv')
+- /public/golden-dataset.csv: 50 rows, 8 task categories
+- "Use sample dataset" link in DatasetUpload loads it via fetch
 
-## Code Rules
-- No em dashes anywhere in copy
-- All API calls go through /api/proxy route
-- TypeScript strict mode, no any types
-- NEVER run git commands
-- Minimum font size 13px, no uppercase labels
-- DM Mono only for data values (scores, tokens, costs, progress counter)
+## Known Issues and Backlog
+- Demo mode with pre-loaded mock results (no API key needed for browsing) -- not yet built
+- eval-studio_1.jsx in repo root is the original artifact code, should be removed
+- tsconfig.tsbuildinfo should be in .gitignore
+- GitHub repo: website should be eval.harshit.ai (not eval-studio.vercel.app), needs topics and description
 
-## Project Log
-### 2026-04-03 -- v0 bootstrapped
-### 2026-04-04 -- Multi-provider + council judge
-### 2026-04-05 -- Full redesign: 3 provider keys, N-way configs, ranked leaderboard, typography overhaul
-### 2026-04-05 -- Cost tracking + homepage + golden dataset shipped
-### 2026-04-05 -- API key error recovery panel shipped
-### 2026-04-05 -- Deployed to Vercel at eval.harshit.ai
+## Completed Work
+- 2026-04-03: v0 bootstrapped (Anthropic-only, single judge)
+- 2026-04-04: Multi-provider support, council judge architecture, N-way configs, ranked leaderboard
+- 2026-04-05: Full redesign (typography, 3 provider keys, cost tracking, homepage, golden dataset, key recovery, deployed to eval.harshit.ai)

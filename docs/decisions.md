@@ -93,3 +93,11 @@ Production-realistic prompts relevant to AI PMs and engineers. Categories: Factu
 
 ### 2026-04-05 -- Positioning locked
 Not a benchmarking tool. Not MMLU. "Bring your company's real data. Test which prompt and which model serves it best. See the cost." Two handles: model selection + prompt engineering. Multi-agent eval parked as v2.
+
+### 2026-04-04
+
+### 2026-04-03 -- Git and file deletion guardrails in CLAUDE.md
+**Decision:** Added two code rules to CLAUDE.md: (1) Never run git commit, push, reset, or any git write commands. (2) Never delete files unless the task spec explicitly names the file. Default to rename or comment out.
+**Why:** With Cursor auto-run mode enabled, Claude Code executes without permission prompts. Without guardrails, a poorly scoped prompt could result in destructive commits or file deletions. These rules apply regardless of which chat generates the Cursor prompt.
+**Rejected:** Relying on Cursor's sandbox protection alone (tested: sandbox does not block file deletion), disabling auto-run (too much friction for daily workflow).
+
