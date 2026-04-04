@@ -8,7 +8,7 @@ Upload your real data. Define your criteria. Run a scored, ranked, cost-tracked 
 
 **Live:** [eval.harshit.ai](https://eval.harshit.ai)
 
-![Eval Studio results page showing ranked leaderboard with cost breakdown](docs/results-screenshot.jpg)
+![Eval Studio results page showing ranked leaderboard with cost breakdown](docs/results-screenshot.png)
 
 ---
 
