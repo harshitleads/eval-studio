@@ -33,7 +33,7 @@ export default function LandingScreen({ onStart }: LandingScreenProps) {
               Test Models
             </h2>
             <p className="text-[15px] font-body leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              Same prompt. Different models. Upload your dataset, define one system prompt, pick 2-4 models. See which model serves your data best - and at what cost.
+              Same prompt. Different models. Upload your golden dataset, define one system prompt, pick 2-4 models. See which model serves your data best - and at what cost.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function LandingScreen({ onStart }: LandingScreenProps) {
               Test Prompts
             </h2>
             <p className="text-[15px] font-body leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              Same model. Different prompts. Upload your dataset, pick one model, write 2-4 system prompts. See which prompt produces better outputs - on your actual data.
+              Same model. Different prompts. Upload your golden dataset, pick one model, write 2-4 system prompts. See which prompt produces better outputs - on your actual data.
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function LandingScreen({ onStart }: LandingScreenProps) {
         {/* 3-step instruction strip */}
         <div className="flex items-start gap-8 mb-12 w-full justify-center">
           {[
-            { num: 1, text: "Upload your dataset (CSV, max 50 rows)" },
+            { num: 1, text: "Upload your golden dataset (CSV, max 50 rows)" },
             { num: 2, text: "Configure your prompts and models" },
             { num: 3, text: "Run the eval and see ranked results with cost breakdown" },
           ].map((step) => (
