@@ -22,8 +22,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Eval Studio",
-  description: "A/B test your AI prompts on real data",
+  title: "Eval Studio | AI Prompt Evaluation Platform",
+  description: "Browser-based LLM evaluation tool. Test prompts and models on your own data with multi-model judge council, cost tracking, and ranked results.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "Eval Studio | AI Prompt Evaluation Platform",
+    description: "Which prompt, which model, at what cost? Test prompts and models on your own data with multi-model judge council, cost tracking, and ranked results.",
+    url: "https://eval.harshit.ai",
+    siteName: "Eval Studio",
+    images: [
+      {
+        url: "https://eval.harshit.ai/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Eval Studio - AI Prompt Evaluation Platform",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Eval Studio | AI Prompt Evaluation Platform",
+    description: "Which prompt, which model, at what cost? Browser-based LLM evaluation with multi-model judge council.",
+    images: ["https://eval.harshit.ai/og-image.png"],
+  },
 };
 
 export default function RootLayout({
