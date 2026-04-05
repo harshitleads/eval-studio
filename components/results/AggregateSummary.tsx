@@ -1,6 +1,6 @@
 "use client";
 
-import { PROVIDERS, PRICING_LAST_UPDATED } from "@/lib/providers";
+import { PROVIDERS, PRICING_LAST_UPDATED, PRICING_URLS } from "@/lib/providers";
 import type { EvalResult, Config, JudgeConfig } from "@/types";
 
 type AggregateSummaryProps = {
@@ -174,9 +174,26 @@ export default function AggregateSummary({ results, configs, judge1, judge2 }: A
         )}
       </div>
 
-      <p className="text-[13px] font-body mb-4" style={{ color: "var(--text-muted)" }}>
-        Prices from provider documentation. Last updated: {PRICING_LAST_UPDATED}.
-      </p>
+      <div className="text-sm font-body mb-4" style={{ color: "var(--text-muted)" }}>
+        <p className="mb-1">Prices last verified: <span className="font-mono">{PRICING_LAST_UPDATED}</span></p>
+        <p>
+          Source:{" "}
+          {(Object.keys(PRICING_URLS) as Array<keyof typeof PRICING_URLS>).map((provider, i) => (
+            <span key={provider}>
+              {i > 0 && " | "}
+              <a
+                href={PRICING_URLS[provider]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80"
+                style={{ color: "var(--text-muted)" }}
+              >
+                {PROVIDERS[provider].label}
+              </a>
+            </span>
+          ))}
+        </p>
+      </div>
 
       <button onClick={exportCSV} className="w-full text-[15px] font-semibold font-body py-3.5 rounded-[8px] cursor-pointer" style={{ background: "rgba(56, 189, 248, 0.08)", border: "1px solid rgba(56, 189, 248, 0.25)", color: "var(--blue)" }}>
         Export CSV

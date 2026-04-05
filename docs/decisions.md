@@ -101,3 +101,22 @@ Not a benchmarking tool. Not MMLU. "Bring your company's real data. Test which p
 **Why:** With Cursor auto-run mode enabled, Claude Code executes without permission prompts. Without guardrails, a poorly scoped prompt could result in destructive commits or file deletions. These rules apply regardless of which chat generates the Cursor prompt.
 **Rejected:** Relying on Cursor's sandbox protection alone (tested: sandbox does not block file deletion), disabling auto-run (too much friction for daily workflow).
 
+
+### 2026-04-05 -- Pricing transparency: links + last-updated instead of live fetch
+**Decision:** Show hardcoded pricing with a "last verified" date and links to each provider's pricing page. No live scraping or fetching.
+**Why:** Pricing pages aren't APIs -- scraping is fragile and maintenance-heavy for zero interview payoff. The hardcoded table with transparent sourcing communicates the same thing: we track cost and show where the data comes from.
+**Rejected:** Live pricing fetch/scraper with fallback to cached data. Complexity not justified for a portfolio demo. Also rejected: no pricing source attribution at all.
+
+### 2026-04-05 -- Proper favicon from converter output, remove PWA files
+**Decision:** Updated layout.tsx icons metadata to reference favicon-32x32.png, favicon-16x16.png, apple-touch-icon.png, and favicon.ico from converter output. Deleted android-chrome PNGs and site.webmanifest.
+**Why:** Eval Studio is not a PWA. The converter produces PWA-oriented files by default, but they add clutter with no benefit. Keeping only the standard favicon set covers browsers and Apple devices.
+**Rejected:** Keeping the webmanifest and android-chrome icons "just in case." No PWA features are planned.
+
+
+### 2026-04-05
+
+### 2026-04-05 -- Favicon: proper format from online converter, no PWA manifest
+**Decision:** Used online favicon converter to generate proper ICO/PNG files. Kept favicon.ico, 16x16, 32x32, and apple-touch-icon. Deleted android-chrome sizes and site.webmanifest.
+**Why:** Original favicon.ico was a JPEG renamed to .ico -- browsers couldn't render it. Converter output gives proper format. PWA files (manifest, android-chrome icons) are unnecessary for a portfolio demo site.
+**Rejected:** Manual conversion via sharp/jimp script (unnecessary when converter does the job). Keeping full PWA icon set (overkill, adds clutter).
+

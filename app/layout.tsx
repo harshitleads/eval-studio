@@ -25,7 +25,12 @@ export const metadata: Metadata = {
   title: "Eval Studio | AI Prompt Evaluation Platform",
   description: "Browser-based LLM evaluation tool. Test prompts and models on your own data with multi-model judge council, cost tracking, and ranked results.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     title: "Eval Studio | AI Prompt Evaluation Platform",

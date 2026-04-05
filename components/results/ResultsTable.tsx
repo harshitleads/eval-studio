@@ -2,6 +2,7 @@
 
 import type { EvalResult, Config } from "@/types";
 import ScoreBadge from "@/components/ui/ScoreBadge";
+import { PRICING_LAST_UPDATED } from "@/lib/providers";
 
 type ResultsTableProps = {
   results: EvalResult[];
@@ -61,8 +62,15 @@ export default function ResultsTable({ results, configs }: ResultsTableProps) {
                         <div className="flex items-center gap-2 mb-1">
                           <ScoreBadge score={co.councilScore} size="sm" />
                         </div>
-                        <div className="font-mono text-[13px]" style={{ color: "var(--text-muted)" }}>
+                        <div className="font-mono text-[13px] flex items-center gap-1" style={{ color: "var(--text-muted)" }}>
                           {(co.inputTokens + co.outputTokens).toLocaleString()} tokens &middot; ${co.cost.toFixed(4)}
+                          <span
+                            className="cursor-help inline-flex items-center justify-center rounded-full text-[10px] font-body font-bold"
+                            style={{ width: 14, height: 14, background: "var(--border)", color: "var(--text-muted)" }}
+                            title={`Based on published pricing as of ${PRICING_LAST_UPDATED}`}
+                          >
+                            i
+                          </span>
                         </div>
                       </div>
                     ) : (

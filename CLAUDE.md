@@ -23,6 +23,18 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - NEVER run git commit, git push, git reset, git checkout, or any git write commands
 - NEVER delete files unless the task spec explicitly says to delete a specific named file
 
+## Favicon and OG Setup
+- Favicon files in `/public/`: `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`
+- OG image: `/public/og-image.png` (1200x630)
+- All wired up in `app/layout.tsx` metadata icons section
+- No PWA manifest -- not needed for this project
+
+## Pricing Data
+- Hardcoded in `lib/providers.ts` in the `PRICING` table
+- `PRICING_LAST_UPDATED` date string tracks when prices were last verified
+- `PRICING_URLS` maps each provider to their pricing page
+- Pricing transparency surfaced in AggregateSummary (footer with date + source links) and ResultsTable (cost column tooltip)
+
 ## Decision Logging
 When you make or execute a product or technical decision, append it to `docs/decisions.md` in this format:
 ```
@@ -42,52 +54,5 @@ When you make or execute a product or technical decision, append it to `docs/dec
 - 2026-04-04: Multi-provider support, council judge architecture, N-way configs, ranked leaderboard
 - 2026-04-04: Full redesign, deployed to eval.harshit.ai, GitHub repo configured
 - 2026-04-04: Favicon and OG image added to /public
-
----
-
-## ACTIVE TASK: Wire up favicon and OG metadata in layout.tsx
-
-The favicon (`/favicon.ico`) and OG image (`/og-image.png`) files are already in the `/public` folder. But the Next.js metadata in `app/layout.tsx` does not reference them.
-
-### Fix
-
-In `app/layout.tsx`, update the `metadata` export to include:
-
-```typescript
-export const metadata: Metadata = {
-  title: "Eval Studio | AI Prompt Evaluation Platform",
-  description: "Browser-based LLM evaluation tool. Test prompts and models on your own data with multi-model judge council, cost tracking, and ranked results.",
-  icons: {
-    icon: "/favicon.ico",
-  },
-  openGraph: {
-    title: "Eval Studio | AI Prompt Evaluation Platform",
-    description: "Which prompt, which model, at what cost? Test prompts and models on your own data with multi-model judge council, cost tracking, and ranked results.",
-    url: "https://eval.harshit.ai",
-    siteName: "Eval Studio",
-    images: [
-      {
-        url: "https://eval.harshit.ai/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Eval Studio - AI Prompt Evaluation Platform",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Eval Studio | AI Prompt Evaluation Platform",
-    description: "Which prompt, which model, at what cost? Browser-based LLM evaluation with multi-model judge council.",
-    images: ["https://eval.harshit.ai/og-image.png"],
-  },
-};
-```
-
-If `metadata` already exists in layout.tsx, merge these fields into it. If it doesn't exist, add it.
-
-### Acceptance criteria
-- Favicon shows in browser tab when visiting eval.harshit.ai
-- OG image appears when the link is shared on LinkedIn/Twitter/Slack
-- Title and description are set in metadata
-- Build passes
+- 2026-04-05: Pricing source links and "last updated" display added to AggregateSummary and ResultsTable
+- 2026-04-05: Favicon fixed -- converted from broken JPEG-as-ico to proper PNG/ICO from converter, cleaned up PWA files

@@ -48,6 +48,12 @@ export const PRICING: Record<string, { inputPer1M: number; outputPer1M: number }
 
 export const PRICING_LAST_UPDATED = '2026-04-05';
 
+export const PRICING_URLS: Record<Provider, string> = {
+  anthropic: 'https://www.anthropic.com/pricing',
+  openai: 'https://openai.com/api/pricing/',
+  gemini: 'https://ai.google.dev/pricing',
+};
+
 export function computeCost(model: string, inputTokens: number, outputTokens: number): number {
   const p = PRICING[model];
   if (!p) return 0;
