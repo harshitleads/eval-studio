@@ -12,7 +12,7 @@ Eval Studio is a browser-based AI prompt evaluation tool for developers and PMs.
 - State: React useState only -- no persistence, no database, in-memory
 - CSV parsing: PapaParse
 - Deployment: Vercel -- live at eval.harshit.ai
-- Repo: github.com/harshitleads/Eval-Studio
+- Repo: github.com/harshitleads/eval-studio
 
 ## Architecture
 
@@ -123,13 +123,15 @@ When >= 50% of rows error after eval completes, an inline key-fix panel appears 
 - /public/golden-dataset.csv: 50 rows, 8 task categories
 - "Use sample dataset" link in DatasetUpload loads it via fetch
 
-## Known Issues and Backlog
-- Demo mode with pre-loaded mock results (no API key needed for browsing) -- not yet built
-- eval-studio_1.jsx in repo root is the original artifact code, should be removed
-- tsconfig.tsbuildinfo should be in .gitignore
-- GitHub repo: website should be eval.harshit.ai (not eval-studio.vercel.app), needs topics and description
+## Pending Work
+- Update favicon for eval.harshit.ai (currently default Next.js favicon)
+- Update OG image for eval.harshit.ai (for social sharing when link is posted)
+- Demo mode with pre-loaded mock results so visitors can browse without API keys
+- Persistent run history across sessions
+- Batch API support for larger datasets
 
 ## Completed Work
 - 2026-04-03: v0 bootstrapped (Anthropic-only, single judge)
 - 2026-04-04: Multi-provider support, council judge architecture, N-way configs, ranked leaderboard
-- 2026-04-05: Full redesign (typography, 3 provider keys, cost tracking, homepage, golden dataset, key recovery, deployed to eval.harshit.ai)
+- 2026-04-04: Full redesign (typography, 3 provider keys, cost tracking, homepage, golden dataset, key recovery, deployed to eval.harshit.ai)
+- 2026-04-04: GitHub repo renamed to eval-studio, description/website/topics set, README updated with case study link
