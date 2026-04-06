@@ -22,3 +22,5 @@ AGENTS.md
 
 # TypeScript build info
 tsconfig.tsbuildinfo
+.claude/
+.cursor/
