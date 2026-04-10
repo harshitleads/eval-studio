@@ -14,10 +14,7 @@ export default function LandingScreen({ onStart }: LandingScreenProps) {
             Eval Studio
           </h1>
           <p className="text-[16px] font-body leading-relaxed max-w-[640px] mx-auto" style={{ color: "var(--text-secondary)" }}>
-            Your data. Your prompts. Your models. Real answers.
-          </p>
-          <p className="text-[16px] font-body leading-relaxed max-w-[640px] mx-auto mt-3" style={{ color: "var(--text-muted)" }}>
-            Not a benchmark. Not a leaderboard. An eval tool for the question every AI team actually faces: which prompt, which model, at what cost?
+            Which prompt, which model, at what cost?
           </p>
         </div>
 
@@ -55,9 +52,9 @@ export default function LandingScreen({ onStart }: LandingScreenProps) {
         {/* 3-step instruction strip */}
         <div className="flex items-start gap-8 mb-12 w-full justify-center">
           {[
-            { num: 1, text: "Upload your golden dataset (CSV, max 50 rows)" },
-            { num: 2, text: "Configure your prompts and models" },
-            { num: 3, text: "Run the eval and see ranked results with cost breakdown" },
+            { num: 1, text: "Upload your dataset (CSV, max 50 rows)" },
+            { num: 2, text: "Pick your models and prompts" },
+            { num: 3, text: "See ranked results with cost breakdown" },
           ].map((step) => (
             <div key={step.num} className="flex items-start gap-3 max-w-[280px]">
               <div
