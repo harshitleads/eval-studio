@@ -120,3 +120,8 @@ Not a benchmarking tool. Not MMLU. "Bring your company's real data. Test which p
 **Why:** Original favicon.ico was a JPEG renamed to .ico -- browsers couldn't render it. Converter output gives proper format. PWA files (manifest, android-chrome icons) are unnecessary for a portfolio demo site.
 **Rejected:** Manual conversion via sharp/jimp script (unnecessary when converter does the job). Keeping full PWA icon set (overkill, adds clutter).
 
+### 2026-04-10 -- Floating case study bubble linking back to harshit.ai
+**Decision:** Added a fixed bottom-right CaseStudyBubble component that appears after 3s, links to harshit.ai/work/eval-studio in a new tab, and reappears 7s after dismissal. Rendered in both the landing-screen return and the main wizard return so it shows on every screen. Mobile media query makes it full-width below 640px.
+**Why:** Every portfolio sub-site should send visitors back to the case study so hiring managers can find the product thinking. Mirrors the CalendlyBubble pattern already used on harshit.ai.
+**Rejected:** Rendering the bubble in layout.tsx (layout is a server component and the bubble needs client state; would also appear above the html/body which is fine but mixing it into each page keeps the conditional landing-screen return explicit). Also rejected: always-visible banner (too intrusive), one-time dismissal with localStorage (scope creep for an in-memory app).
+

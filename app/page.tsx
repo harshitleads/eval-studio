@@ -9,6 +9,7 @@ import DatasetUpload from "@/components/steps/DatasetUpload";
 import ConfigBuilder from "@/components/steps/ConfigBuilder";
 import RubricBuilder from "@/components/steps/RubricBuilder";
 import RunEval from "@/components/steps/RunEval";
+import CaseStudyBubble from "@/components/CaseStudyBubble";
 
 const STEP_LABELS = ["API Keys", "Dataset", "Configure", "Rubric", "Results"];
 
@@ -35,7 +36,12 @@ export default function Home() {
 
   // Landing screen
   if (currentStep === -1) {
-    return <LandingScreen onStart={() => goTo(0)} />;
+    return (
+      <>
+        <LandingScreen onStart={() => goTo(0)} />
+        <CaseStudyBubble />
+      </>
+    );
   }
 
   return (
@@ -113,6 +119,7 @@ export default function Home() {
           )}
         </div>
       </main>
+      <CaseStudyBubble />
     </div>
   );
 }
