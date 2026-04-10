@@ -1,36 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-
 export default function CaseStudyBubble() {
-  const [visible, setVisible] = useState(false);
-  const reappearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const scheduleShow = useCallback((delay: number) => {
-    if (reappearTimer.current) clearTimeout(reappearTimer.current);
-    reappearTimer.current = setTimeout(() => setVisible(true), delay);
-  }, []);
-
-  useEffect(() => {
-    scheduleShow(3000);
-    return () => {
-      if (reappearTimer.current) clearTimeout(reappearTimer.current);
-    };
-  }, [scheduleShow]);
-
-  function hide() {
-    setVisible(false);
-    scheduleShow(7000);
-  }
-
-  function handleDismiss(e: React.MouseEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    hide();
-  }
-
-  if (!visible) return null;
-
   return (
     <a
       href="https://harshit.ai/work/eval-studio"
@@ -61,16 +31,6 @@ export default function CaseStudyBubble() {
           How I built Eval Studio
         </p>
       </div>
-      <button
-        onClick={handleDismiss}
-        className="ml-1 bg-transparent border-none cursor-pointer text-[16px] leading-none p-0"
-        style={{ color: "#64748b" }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "#e2e8f0")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
-        aria-label="Dismiss"
-      >
-        &#215;
-      </button>
     </a>
   );
 }
